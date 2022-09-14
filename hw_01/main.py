@@ -2,6 +2,11 @@ def sol_eq(a, b, c):
     assert None not in (a, b, c), "a, b, c must be numbers"
     d = b ** 2 - 4 * a * c
 
+    if a == 0:
+        if b == 0:
+            return None
+        return -c / b, None
+
     if d < 0:
         return None
 
@@ -12,7 +17,6 @@ def sol_eq(a, b, c):
 
 
 def div_par(all_nums):
-
     assert all_nums is not None, "all_nums must be a list"
     odd_nums = []
     even_nums = []
@@ -24,3 +28,14 @@ def div_par(all_nums):
             even_nums.append(el)
 
     return even_nums, odd_nums
+
+
+assert (sol_eq(1, 4, 4) == (-2, -2))
+assert (sol_eq(-1, -3, -5) is None)
+assert (sol_eq(0, 3, 6) == (-2, None))
+assert (sol_eq(0, 0, 1) is None)
+
+assert (div_par([1, 2, 3, 4, 5, 6]) == ([2, 4, 6], [1, 3, 5]))
+assert (div_par([2, 2, 2, 2, 2]) == ([2, 2, 2, 2, 2], []))
+assert (div_par([1]) == ([], [1]))
+assert (div_par([]) == ([], []))
