@@ -1,9 +1,12 @@
+import math
+
+
 def sol_eq(a, b, c):
     assert None not in (a, b, c), "a, b, c must be numbers"
     d = b ** 2 - 4 * a * c
 
-    if a == 0:
-        if b == 0:
+    if math.isclose(a, 0):
+        if math.isclose(b, 0):
             return None
         return -c / b, None
 
