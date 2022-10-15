@@ -1,3 +1,6 @@
+from custom_error import NotDigitError, ValueNotInRangeError
+
+
 class TicTac:
 
     def __init__(self, player1="Player1", player2="Player2"):
@@ -33,7 +36,9 @@ class TicTac:
 
         try:
             step = self.validate_input(step)
-        except ValueError as err:
+        except NotDigitError as err:
+            print(err.args[0])
+        except ValueNotInRangeError as err:
             print(err.args[0])
         else:
             if self.__is_free_pos(step):
@@ -99,14 +104,14 @@ class TicTac:
             try:
                 value = int(value)
             except ValueError as exc:
-                raise ValueError('value must be digits') from exc
+                raise NotDigitError(value) from exc
 
         if isinstance(value, int):
             if 0 > value or value > 8:
-                raise ValueError('value must be in range 0-8')
+                raise ValueNotInRangeError(value)
             return int(value)
 
-        raise ValueError('value must be digits')
+        raise NotDigitError(value)
 
 
 if __name__ == "__main__":

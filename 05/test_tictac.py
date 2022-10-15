@@ -1,5 +1,7 @@
 import unittest
 from unittest import mock
+
+from custom_error import NotDigitError, ValueNotInRangeError
 from tictac import TicTac
 
 
@@ -15,16 +17,18 @@ class TestTicTac(unittest.TestCase):
         """
         cur_game = TicTac()
 
-        def _test_input(input_data, expected_str):
+        def _test_input(input_data, expected_error):
             for cur_val in input_data:
-                self.assertRaises(ValueError, cur_game.validate_input, cur_val)
+                self.assertRaises(expected_error, cur_game.validate_input, cur_val)
                 mock_input.return_value = cur_val
                 with mock.patch('builtins.print') as mock_print:
                     cur_game.make_step()
-                    mock_print.assert_called_with(expected_str)
+                    mock_print.assert_called_with(f'{cur_val} - {expected_error.message}')
 
-        _test_input(input_data=["fwdfw", [12, 4, 2], "4.6"], expected_str="value must be digits")
-        _test_input(input_data=["-1", "9", "1000"], expected_str='value must be in range 0-8')
+        _test_input(input_data=["fwdfw", [12, 4, 2], "4.6"],
+                    expected_error=NotDigitError)
+        _test_input(input_data=["-1", "9", "1000"],
+                    expected_error=ValueNotInRangeError)
 
         local_steps_lists = [[3, 3], [1, 2, 2, 2, 1, 3], [8, 3, 2, 5, 2, 2]]
         for local_steps in local_steps_lists:
