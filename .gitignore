@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 .idea/
 
-./draft_file.ipynb
+draft_file.ipynb
