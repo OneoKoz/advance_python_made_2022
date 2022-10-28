@@ -1,0 +1,83 @@
+2022-10-29 01:34:10,242 - [INFO]	- main_with_stdout - (lru_cache.py).__init__(30) - new dict is created with limit = 2
+2022-10-29 01:34:10,242 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val1', 'k1')
+2022-10-29 01:34:10,242 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k1
+2022-10-29 01:34:10,242 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k1 added
+2022-10-29 01:34:10,242 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val2', 'k2')
+2022-10-29 01:34:10,242 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k2
+2022-10-29 01:34:10,242 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k2 added
+2022-10-29 01:34:10,242 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k3
+2022-10-29 01:34:10,242 - [WARNING]	- main_with_stdout - (lru_cache.py).get(50) - k3 is not in dict LRUCache
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k2
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k2
+2022-10-29 01:34:10,243 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k2
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k1
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k1
+2022-10-29 01:34:10,243 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k1
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val3', 'k3')
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(62) - start procedure for deleting the least priority key
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(67) - delete key = k2
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k3
+2022-10-29 01:34:10,243 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k3 added
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k3
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k3
+2022-10-29 01:34:10,243 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k3
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k2
+2022-10-29 01:34:10,243 - [WARNING]	- main_with_stdout - (lru_cache.py).get(50) - k2 is not in dict LRUCache
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k1
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k1
+2022-10-29 01:34:10,243 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k1
+2022-10-29 01:34:10,243 - [INFO]	- main_with_stdout - (lru_cache.py).__init__(30) - new dict is created with limit = 2
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val1', 'k1')
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k1
+2022-10-29 01:34:10,243 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k1 added
+2022-10-29 01:34:10,243 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val2', 'k2')
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k2
+2022-10-29 01:34:10,244 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k2 added
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val3', 'k1')
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k1
+2022-10-29 01:34:10,244 - [INFO]	- main_with_stdout - (lru_cache.py).set(58) - changed value for existing key = k1
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val4', 'k4')
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(62) - start procedure for deleting the least priority key
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(67) - delete key = k2
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k4
+2022-10-29 01:34:10,244 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k4 added
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k4
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k4
+2022-10-29 01:34:10,244 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k4
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k2
+2022-10-29 01:34:10,244 - [WARNING]	- main_with_stdout - (lru_cache.py).get(50) - k2 is not in dict LRUCache
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k1
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k1
+2022-10-29 01:34:10,244 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k1
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('test', 'k4')
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k4
+2022-10-29 01:34:10,244 - [INFO]	- main_with_stdout - (lru_cache.py).set(58) - changed value for existing key = k4
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val5', 'k5')
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(62) - start procedure for deleting the least priority key
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(67) - delete key = k1
+2022-10-29 01:34:10,244 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k5
+2022-10-29 01:34:10,245 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k5 added
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k1
+2022-10-29 01:34:10,245 - [WARNING]	- main_with_stdout - (lru_cache.py).get(50) - k1 is not in dict LRUCache
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k2
+2022-10-29 01:34:10,245 - [WARNING]	- main_with_stdout - (lru_cache.py).get(50) - k2 is not in dict LRUCache
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k4
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k4
+2022-10-29 01:34:10,245 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k4
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k5
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k5
+2022-10-29 01:34:10,245 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k5
+2022-10-29 01:34:10,245 - [INFO]	- main_with_stdout - (lru_cache.py).__init__(30) - new dict is created with limit = 1
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val1', 'k1')
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k1
+2022-10-29 01:34:10,245 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k1 added
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(54) - start "LRUCache.set" method with param ('val2', 'k2')
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(62) - start procedure for deleting the least priority key
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).set(67) - delete key = k1
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k2
+2022-10-29 01:34:10,245 - [INFO]	- main_with_stdout - (lru_cache.py).set(73) - new key = k2 added
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k1
+2022-10-29 01:34:10,245 - [WARNING]	- main_with_stdout - (lru_cache.py).get(50) - k1 is not in dict LRUCache
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py).get(45) - start "LRUCache.get" method with param k2
+2022-10-29 01:34:10,245 - [DEBUG]	- main_with_stdout - (lru_cache.py)._change_prior_dict(33) - start "LRUCache._change_prior_dict" method with param k2
+2022-10-29 01:34:10,246 - [INFO]	- main_with_stdout - (lru_cache.py).get(48) - return value by key = k2
