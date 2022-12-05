@@ -9,13 +9,13 @@ def profile_dec(func):
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        pr = cProfile.Profile()
-        pr.enable()
+        profile = cProfile.Profile()
+        profile.enable()
         retval = func(*args, **kwargs)
-        pr.disable()
-        s = io.StringIO()
-        ps = pstats.Stats(pr, stream=s).sort_stats('cumulative')
-        ps_global.add(ps)
+        profile.disable()
+        stream = io.StringIO()
+        psstats = pstats.Stats(profile, stream=stream).sort_stats('cumulative')
+        ps_global.add(psstats)
         return retval
 
     def print_stat():
