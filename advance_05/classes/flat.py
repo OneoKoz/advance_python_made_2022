@@ -3,7 +3,7 @@ import weakref
 
 from memory_profiler import profile
 
-from advance_05.custom_profile import profile_dec
+from advance_05.custom_profile import profile_dec, calculate_time
 
 
 class Flat:
@@ -19,6 +19,7 @@ class Flat:
 
 @profile
 @profile_dec
+@calculate_time
 def create_flat(count: int, owners, houses):
     flat_number = (1, 2, 3, 4, 45, 25)
     flat_entrance = (1, 2, 3, 4, 5, 7)
@@ -39,6 +40,7 @@ def create_flat(count: int, owners, houses):
 
 @profile
 @profile_dec
+@calculate_time
 def change_flat(flats: list[Flat]):
     for val in flats:
         val.number += 10
@@ -48,6 +50,7 @@ def change_flat(flats: list[Flat]):
 
 @profile
 @profile_dec
+@calculate_time
 def change_flat_weakref(flats: list[Flat], houses: list, owner: list):
     for i, val in enumerate(flats):
         val.owner = weakref.ref(owner[i])

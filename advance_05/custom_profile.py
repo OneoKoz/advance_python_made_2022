@@ -2,6 +2,7 @@ import cProfile
 import functools
 import io
 import pstats
+import time
 
 
 def profile_dec(func):
@@ -22,4 +23,15 @@ def profile_dec(func):
         ps_global.print_stats()
 
     wrapper.print_stat = print_stat
+    return wrapper
+
+
+def calculate_time(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        res = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} -> time work = {end_time - start_time}")
+        return res
     return wrapper

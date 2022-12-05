@@ -1,8 +1,7 @@
 import random
-
 from memory_profiler import profile
 
-from advance_05.custom_profile import profile_dec
+from advance_05.custom_profile import profile_dec, calculate_time
 
 
 class Owner:
@@ -15,6 +14,7 @@ class Owner:
 
 @profile
 @profile_dec
+@calculate_time
 def create_owner(count: int):
     owner_name = ("Svetlana", "Ivan", "Gleb", "Petr", "Maria", "Anastasia")
     owner_age = (23, 34, 12, 43, 22, 63)
@@ -33,6 +33,7 @@ def create_owner(count: int):
 
 @profile
 @profile_dec
+@calculate_time
 def change_owner(owners: list[Owner]):
     for val in owners:
         val.work = "NEW_WORK"

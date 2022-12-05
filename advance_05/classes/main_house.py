@@ -2,7 +2,7 @@ import random
 
 from memory_profiler import profile
 
-from advance_05.custom_profile import profile_dec
+from advance_05.custom_profile import profile_dec, calculate_time
 
 
 class MainHouse:
@@ -19,6 +19,7 @@ class MainHouse:
 
 @profile
 @profile_dec
+@calculate_time
 def create_main_house(count: int):
     house_num_house = (100, 43, 11, 4, 50, 23)
     house_street = ("Main", "Broadway", "Park Avenue",
@@ -38,6 +39,7 @@ def create_main_house(count: int):
 
 @profile
 @profile_dec
+@calculate_time
 def change_main_house(houses: list[MainHouse]):
     for val in houses:
         val.num_house += 10

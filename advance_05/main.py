@@ -10,6 +10,7 @@ COUNT_ELEMENTS = 100_000
 # pr = cProfile.Profile()
 # pr.enable()
 
+
 all_owner = create_owner(COUNT_ELEMENTS)
 all_main_houses = create_main_house(COUNT_ELEMENTS)
 all_flats = create_flat(COUNT_ELEMENTS, all_owner, all_main_houses)
