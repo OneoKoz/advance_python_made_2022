@@ -8,7 +8,8 @@ from advance_05.custom_profile import profile_dec
 class MainHouse:
     __slots__ = ("num_house", "street", "num_free_flat", "num_residents", "city", '__weakref__')
 
-    def __init__(self, num_house: int, street: str, num_free_flat: int, num_residents: int, city: str = "Minsk"):
+    def __init__(self, num_house: int, street: str, num_free_flat: int,
+                 num_residents: int, city: str = "Minsk"):
         self.num_house = num_house
         self.street = street
         self.num_free_flat = num_free_flat
@@ -20,7 +21,8 @@ class MainHouse:
 @profile_dec
 def create_main_house(count: int):
     house_num_house = (100, 43, 11, 4, 50, 23)
-    house_street = ("Main", "Broadway", "Park Avenue", "St. Mark’s Place", "5th Avenue", "Washington Street")
+    house_street = ("Main", "Broadway", "Park Avenue",
+                    "St. Mark’s Place", "5th Avenue", "Washington Street")
     house_num_free_flat = (3, 20, 499)
     house_num_residents = (1111, 432, 4, 134, 243)
 
@@ -37,9 +39,9 @@ def create_main_house(count: int):
 @profile
 @profile_dec
 def change_main_house(houses: list[MainHouse]):
-    for i in range(len(houses)):
-        houses[i].num_house += 10
-        houses[i].city = "NEW CITY"
-        houses[i].street = "NEW STREET"
-        houses[i].num_free_flat += 10
-        houses[i].num_residents += 10
+    for val in houses:
+        val.num_house += 10
+        val.city = "NEW CITY"
+        val.street = "NEW STREET"
+        val.num_free_flat += 10
+        val.num_residents += 10

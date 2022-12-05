@@ -34,8 +34,8 @@ def create_owner(count: int):
 @profile
 @profile_dec
 def change_owner(owners: list[Owner]):
-    for i in range(len(owners)):
-        owners[i].work = "NEW_WORK"
-        owners[i].name = "NEW_NAME"
-        owners[i].age += 10
-        owners[i].marital_status = "NEW_STATUS"
+    for val in owners:
+        val.work = "NEW_WORK"
+        val.name = "NEW_NAME"
+        val.age += 10
+        val.marital_status = "NEW_STATUS"

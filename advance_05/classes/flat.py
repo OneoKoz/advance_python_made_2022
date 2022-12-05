@@ -40,15 +40,15 @@ def create_flat(count: int, owners, houses):
 @profile
 @profile_dec
 def change_flat(flats: list[Flat]):
-    for i in range(len(flats)):
-        flats[i].number += 10
-        flats[i].entrance += 10
-        flats[i].num_room += 10
+    for val in flats:
+        val.number += 10
+        val.entrance += 10
+        val.num_room += 10
 
 
 @profile
 @profile_dec
 def change_flat_weakref(flats: list[Flat], houses: list, owner: list):
-    for i in range(len(flats)):
-        flats[i].owner = weakref.ref(owner[i])
-        flats[i].main_house = weakref.ref(houses[i])
+    for i, val in enumerate(flats):
+        val.owner = weakref.ref(owner[i])
+        val.main_house = weakref.ref(houses[i])
