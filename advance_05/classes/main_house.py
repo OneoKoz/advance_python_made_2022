@@ -2,6 +2,8 @@ import random
 
 from memory_profiler import profile
 
+from advance_05.custom_profile import profile_dec
+
 
 class MainHouse:
     __slots__ = ("num_house", "street", "num_free_flat", "num_residents", "city", '__weakref__')
@@ -15,6 +17,7 @@ class MainHouse:
 
 
 @profile
+@profile_dec
 def create_main_house(count: int):
     house_num_house = (100, 43, 11, 4, 50, 23)
     house_street = ("Main", "Broadway", "Park Avenue", "St. Mark’s Place", "5th Avenue", "Washington Street")
@@ -32,6 +35,7 @@ def create_main_house(count: int):
 
 
 @profile
+@profile_dec
 def change_main_house(houses: list[MainHouse]):
     for i in range(len(houses)):
         houses[i].num_house += 10

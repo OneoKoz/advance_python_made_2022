@@ -2,6 +2,8 @@ import random
 
 from memory_profiler import profile
 
+from advance_05.custom_profile import profile_dec
+
 
 class Owner:
     def __init__(self, name: str, age: int, marital_status: str, work: str):
@@ -12,6 +14,7 @@ class Owner:
 
 
 @profile
+@profile_dec
 def create_owner(count: int):
     owner_name = ("Svetlana", "Ivan", "Gleb", "Petr", "Maria", "Anastasia")
     owner_age = (23, 34, 12, 43, 22, 63)
@@ -29,6 +32,7 @@ def create_owner(count: int):
 
 
 @profile
+@profile_dec
 def change_owner(owners: list[Owner]):
     for i in range(len(owners)):
         owners[i].work = "NEW_WORK"
