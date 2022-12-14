@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import yaml
 
-CONF_FILE_PATH = "conf/conf.yaml"
+CONF_FILE_PATH = "../conf/conf.yaml"
 
 
 @dataclass

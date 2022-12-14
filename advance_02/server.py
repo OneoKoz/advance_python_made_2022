@@ -9,31 +9,28 @@ import urllib
 from collections import defaultdict
 from urllib.request import urlopen
 
-from conf import config as con
-
-conf = con.get_data()
-que_conn = queue.Queue()
-COUNT_WORD = 7
-COUNT_THREADS = 7
+from advance_02.conf import config as con
 
 
-def calc_word(url: str):
+def calc_word(url: str, num_word: int, config: con):
     count_dict = defaultdict(int)
     try:
         resp = urlopen(url)
     except urllib.error.HTTPError as err:
         print(err)
-        return b''
+        return b'{}'
     with resp:
-        for line in resp.readlines():
-            line = line.decode(conf.encoding)
+        line = resp.readline()
+        while line:
+            line = line.decode(config.encoding)
             line = re.sub(r'\W+', ' ', line)
             for word in line.split(' '):
                 if word:
                     count_dict[word] += 1
+            line = resp.readline()
 
-    count_dict = dict(sorted(count_dict.items(), key=lambda item: item[1], reverse=True)[:COUNT_WORD])
-    count_dict_encode = json.dumps(count_dict).encode(conf.encoding)
+    count_dict = dict(sorted(count_dict.items(), key=lambda item: item[1], reverse=True)[:num_word])
+    count_dict_encode = json.dumps(count_dict).encode(config.encoding)
     return count_dict_encode
 
 
@@ -52,7 +49,7 @@ def is_socket_closed(sock: socket.socket) -> bool:
     return False
 
 
-def get_url_info(que: queue.Queue):
+def get_url_info(que: queue.Queue, num_word: int, config: con):
     while True:
         if not que.empty():
             cur_conn = que.get()
@@ -64,51 +61,68 @@ def get_url_info(que: queue.Queue):
 
             with cur_conn:
                 while not is_socket_closed(cur_conn):
-                    url = cur_conn.recv(1024).decode(conf.encoding)
+                    url = cur_conn.recv(1024).decode(config.encoding)
                     if not url:
+                        cur_conn.sendall(b'{}')
                         break
-                    ans = calc_word(url)
+                    ans = calc_word(url, num_word, config)
                     cur_conn.sendall(ans)
 
 
-def start_server():
+def start_server(num_threads: int, num_word: int):
+    que = queue.Queue()
+    config = con.get_data()
     all_threads = [
         threading.Thread(
             target=get_url_info,
-            args=(que_conn,),
-        ) for _ in range(COUNT_THREADS)]
+            args=(que, num_word, config),
+        ) for _ in range(num_threads)]
 
     for thread in all_threads:
         thread.start()
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        sock.bind((conf.host, conf.port))
-        sock.listen(10)
-        sock.settimeout(conf.timeout)
+        sock.bind((config.host, config.port))
+        sock.listen()
+        sock.settimeout(config.timeout)
         while True:
             try:
                 conn, addr = sock.accept()
                 print(f'{addr=}')
-                que_conn.put(conn)
+                que.put(conn)
             except socket.timeout:
-                que_conn.put(None)
+                que.put(None)
                 break
             except KeyboardInterrupt:
-                que_conn.put(None)
+                que.put(None)
                 break
+            except Exception as err:
+                print(err)
 
 
-if __name__ == "__main__":
+def get_args():
+    num_threads = None
+    num_word = None
     for k, v in getopt.getopt(sys.argv[1:], 'w:k:')[0]:
         if k == '-w':
             try:
-                COUNT_THREADS = int(v)
+                num_threads = int(v)
             except ValueError:
                 print('count must be number')
 
         if k == '-k':
             try:
-                COUNT_WORD = int(v)
+                num_word = int(v)
             except ValueError:
                 print('count must be number')
-    start_server()
+
+    return num_threads, num_word
+
+
+if __name__ == "__main__":
+    conf = con.get_data()
+    que_conn = queue.Queue()
+
+    count_threads, count_word = get_args()
+    if count_word is not None and count_threads is not None:
+        start_server(count_threads, count_word)
