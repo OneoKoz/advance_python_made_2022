@@ -2,7 +2,7 @@ import os.path
 import unittest
 from unittest import mock
 
-from advance_06.fetcher import get_args
+from advance_06.fetcher import get_args, start_client
 
 
 class TestFetcher(unittest.TestCase):
@@ -24,3 +24,21 @@ class TestFetcher(unittest.TestCase):
                 for cur_arg in mock_print.call_args_list:
                     if test[1] in cur_arg[0][0]:
                         assert cur_arg[0][0] == test[1]
+
+
+class TestFetcherAsync(unittest.IsolatedAsyncioTestCase):
+
+    @mock.patch('advance_06.fetcher.fetch_url', new_callable=mock.AsyncMock)
+    async def test_fetch(self, mock_fetch_url):
+        mock_fetch_url.return_value = 5
+        path2file = 'urls.txt'
+        with open(path2file, 'r', encoding='utf-8') as file:
+            count_url = len(file.readlines())
+
+        with mock.patch('builtins.print') as mock_print:
+            await start_client(5, 'urls.txt')
+
+            for cur_arg in mock_print.call_args_list:
+                count_url -= 1
+                assert cur_arg[0][-1] == 5
+        assert count_url == 0

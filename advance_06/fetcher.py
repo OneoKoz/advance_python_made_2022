@@ -7,8 +7,12 @@ import aiohttp
 
 async def fetch_url(url, session):
     async with session.get(url) as resp:
-        data = await resp.read()
-        return len(data)
+        try:
+            data = await resp.read()
+            return len(data)
+        except Exception as err:
+            print(err)
+            return 0
 
 
 async def read_file_urls(path: str):
