@@ -54,6 +54,7 @@ def start_client(path2file: str, num_threads: int = 5):
 
     if num_threads < 1:
         print('num_thread must be positive int')
+        num_threads = 1
 
     all_threads = [
         threading.Thread(
