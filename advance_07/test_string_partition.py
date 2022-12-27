@@ -73,3 +73,17 @@ class TestStringPartition(unittest.TestCase):
             self.assertEqual(left_res, left)
             self.assertEqual(sign_res, sign)
             self.assertEqual(right_res, right)
+
+    def test_all_line(self):
+        tests_val = [
+            ('test /t/e/s/t', 'test /t/e/s/t', '', ''),
+            ('test .t.e.s.t.', 'test .t.e.s.t.', '', ''),
+            ('testqqtqestq', 'testqqtqestq', '', ''),
+        ]
+
+        for line, sign, left, right in tests_val:
+            self.assertEqual(len(line.partition(sign)), 3)
+            left_res, sign_res, right_res = line.partition(sign)
+            self.assertEqual(left_res, left)
+            self.assertEqual(sign_res, sign)
+            self.assertEqual(right_res, right)
