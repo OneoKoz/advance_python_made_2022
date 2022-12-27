@@ -15,14 +15,12 @@ async def fetch_url(url, session):
             return 0
 
 
-async def read_file_urls(path: str):
-    que = asyncio.Queue()
+async def read_file_urls(path: str, que: asyncio.Queue):
     with open(path, 'r', encoding='utf-8') as file:
         line = file.readline()
         while line:
             await que.put(line.strip())
             line = file.readline()
-    return que
 
 
 async def worker(queue, session, num):
@@ -31,6 +29,8 @@ async def worker(queue, session, num):
         try:
             res = await fetch_url(url, session)
             print(f"worker_{num}", res)
+        except Exception as err:
+            print(err)
         finally:
             queue.task_done()
 
@@ -50,7 +50,8 @@ async def start_client(num_workers: int, path2url: str):
     if any(check_data(num_workers, path2url)) is None:
         return
 
-    urls_queue = await read_file_urls(path2url)
+    urls_queue = asyncio.Queue()
+    await read_file_urls(path2url, urls_queue)
     await fetch_batch_urls(urls_queue, num_workers)
 
 
